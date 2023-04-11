@@ -1,0 +1,33 @@
+.card {
+    
+    padding: 15px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+    background-color: #4B82B5;
+  }
+  
+  .card__image {
+    
+    width: 100px;
+    height: 100px;
+    height: auto;
+  }
+  
+  .card__body {
+    padding: 1rem;
+    
+  }
+  
+  .card__title {
+    font-size: 1.5rem;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .card__rating {
+    font-size: 1.5rem;
+    margin: 0;
+    text-align: center;
+  }
+
