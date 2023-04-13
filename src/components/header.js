@@ -12,7 +12,7 @@ function Header() {
         <img src={process.env.PUBLIC_URL + '/logo.jpg'} alt="logo" />
       </div>
       <h1 className="header__title">DCC Movie Reviews</h1>
-      <button>Add Movie</button>
+      <button id="addMovieButton">Add Movie</button>
     </header>
   );
 } else {
