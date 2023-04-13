@@ -3,7 +3,7 @@ import './header.css';
 //import logo from './logo.jpg';
 
 function Header() {
-  let isLoggedIn = true;  
+  let isLoggedIn = false;  
   
   if (isLoggedIn) {
     return (
