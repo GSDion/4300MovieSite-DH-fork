@@ -15,7 +15,13 @@
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
-    line-height: 44px;          
+    line-height: 44px;
+    padding-left: 30px;           
+}
+
+.welcome {
+  align-items: center;
+  font-family: 'Inter';
 }
 
 .header__homebutton {
@@ -47,5 +53,22 @@
     background-color: #000000;
     color: #4B82B5;
     cursor: pointer;
+  }
+
+  label {
+    font-family: 'Inter';
+  }
+
+  input {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .loginsection {
+    margin-left: 270px;
+  }
+
+  .addmoviebutton {
+    margin-left: 525px;
   }
   
