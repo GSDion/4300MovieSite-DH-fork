@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Card from './Card';
+import Card from './movieformcard';
 import './movieform.css';
 
 function MovieForm(props) {
