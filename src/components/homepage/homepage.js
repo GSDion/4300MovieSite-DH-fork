@@ -54,7 +54,9 @@ function HomePage() {
   return (
     <div>
       <Header />
-      <Movies items ={DUMMY_MOVIES} />
+      <div className='movie-grid'>
+        <Movies items ={DUMMY_MOVIES} />
+      </div>
     </div>
   );
 }
