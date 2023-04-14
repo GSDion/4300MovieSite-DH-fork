@@ -8,7 +8,8 @@ const port = process.env.PORT || 8082;
 
 const mongoose = require('mongoose');
 const cors = require('cors');
-
+const items = require('./routes/api/items');
+app. use('/api/items',items);
 // Connect Database
 app.use(cors({ origin: true, credentials: true}));
 
