@@ -1,6 +1,8 @@
 import React from 'react';
 import './header.css';
-//import logo from './logo.jpg';
+
+import { Link } from 'react-router-dom';
+
 
 function Header() {
   let isLoggedIn = false;  
@@ -13,7 +15,10 @@ function Header() {
       </div>
       <h1 className="header__title">DCC Movie Reviews</h1>
       <h2 className="welcome">Welcome *username*!</h2> 
-      <button className="addmoviebutton">Add Movie</button>
+      <button className="addmoviebutton">
+        {/* Need to make sure this works */ }
+        <Link to="/add-item" className="button">Add Movie</Link>
+      </button>
     </header>
   );
 } else {

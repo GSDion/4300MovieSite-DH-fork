@@ -3,11 +3,11 @@ import './secondheader.css';
 
 function SecHeader() {
     return (
-    <header className="header">
-      <div className="header__homebutton">
+    <header className="secheader">
+      <div className="secheader__homebutton">
         <img src={process.env.PUBLIC_URL + '/homebutton.png'} alt="homebutton" />
       </div>
-      <h1 className="header__title">DCC Movie Reviews</h1>
+      <h1 className="secheader__title">DCC Movie Reviews</h1>
     </header>
   );
 }
