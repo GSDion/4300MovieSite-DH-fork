@@ -5,6 +5,8 @@
     overflow: hidden;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
     background-color: #4B82B5;
+    width: 200px;
+    height: 400px;
   }
   
   .card__image {
