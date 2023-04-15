@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 function Header() {
-  let isLoggedIn = false;  
+  let isLoggedIn = true;  
   
   if (isLoggedIn) {
     return (
