@@ -1,0 +1,38 @@
+.moviecard {
+    display: flex;
+    flex-direction: column;
+    background-color: #4B82B5;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 600px; /* change the width to your desired size */
+    height: 400px;
+    margin: 0 auto ; /* center the card horizontally */
+    margin-top:45px;
+  }
+  
+  .moviecard__header {
+    background-color: #4B82B5; /* change the background color */
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 1rem;
+  }
+  
+  .moviecard__body {
+     /* change the background color */
+    padding: 1rem;
+  }
+  
+  .moviecard__footer {
+    background-color: #616071;
+  }
+  
+  .form-control {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+  .form-actions {
+    margin-top: 30px;
+    margin-left: 240px;
+  }
