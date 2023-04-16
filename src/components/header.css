@@ -60,6 +60,11 @@
     font-family: 'Inter';
   }
 
+  a {
+    text-decoration: none;
+    color: white;
+  } 
+
   input {
     padding: 10px;
     margin: 10px;

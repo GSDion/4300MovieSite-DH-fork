@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Card from './movieformcard';
 import './movieform.css';
 
+
 function MovieForm(props) {
   const [title, setTitle] = useState('');
   const [rating, setRating] = useState('');
@@ -15,7 +16,7 @@ function MovieForm(props) {
     setImg('');
   }
 
-  return (
+  return (  
     <Card className='form'>
       <form onSubmit={handleSubmit}>
         <div className='form-control'>
