@@ -20,7 +20,10 @@ function MovieForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.onAddMovie({ title, rating, img });
+    newMovie.title = title;
+    newMovie.rating = rating;
+    newMovie.image = img;
+    props.onAddMovie(newMovie);
     setTitle('');
     setRating('');
     setImg('');
