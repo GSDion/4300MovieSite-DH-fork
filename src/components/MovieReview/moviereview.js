@@ -1,17 +1,15 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import Header from '../header';
+import SecHeader from '../secondheader';
+import '../secondheader.css';
 import './moviereview.css';
 
 
 function MovieReview() {
-  const { id } = useParams();
-
 
   return (
     <div>
-      <h1>Movie Review</h1>
-      <p>ID: {id}</p>
+      <SecHeader />
+      <h1>The Movie was pretty good</h1>
     </div>
   );
 }
