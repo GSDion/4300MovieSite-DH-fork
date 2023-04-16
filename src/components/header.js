@@ -14,7 +14,7 @@ function Header() {
         <img src={process.env.PUBLIC_URL + '/logo.jpg'} alt="logo" />
       </div>
       <h1 className="header__title">DCC Movie Reviews</h1>
-      <h2 className="welcome">Welcome *username*!</h2> 
+      <h2 className="welcome">Welcome!</h2> 
       <button className="addmoviebutton">
         {/* Need to make sure this works */ }
         <Link to="/add-item" className="button">Add Movie</Link>

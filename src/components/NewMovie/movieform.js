@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Card from './movieformcard';
 import './movieform.css';
+import '../header.css';
+import { DUMMY_MOVIES } from '../homepage/homepage';
+
 
 
 function MovieForm(props) {
@@ -8,12 +11,20 @@ function MovieForm(props) {
   const [rating, setRating] = useState('');
   const [img, setImg] = useState('');
 
+  const newMovie = {
+    id: 'm' + (DUMMY_MOVIES.length + 1),
+    title: null,
+    rating: null,
+    image: null
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     props.onAddMovie({ title, rating, img });
     setTitle('');
     setRating('');
     setImg('');
+    DUMMY_MOVIES.push(newMovie);
   }
 
   return (  
@@ -32,7 +43,7 @@ function MovieForm(props) {
           <input type='text' id='img' value={img} onChange={(event) => setImg(event.target.value)} />
         </div>
         <div className='form-actions'>
-          <button type='submit'>Add Movie</button>
+          <button className="addmoviebutton">Add Movie</button>
         </div>
       </form>
     </Card>

@@ -2,8 +2,7 @@ import Movies from './movies';
 import Header from '../header';
 
 
-
-const DUMMY_MOVIES = [
+export const DUMMY_MOVIES = [
   {
     id: 'm1',
     title: 'Inception',
