@@ -3,6 +3,7 @@ import Card from './moviecard';
 import './movieitem.css';
 import { Link } from 'react-router-dom';
 import HomePage, { DUMMY_MOVIES } from '../homepage/homepage';
+import {isLoggedIn} from '../header.js';
 
 function MovieItem(props) {
 
@@ -22,7 +23,7 @@ function MovieItem(props) {
 
  };
 
-
+if (isLoggedIn === true) {
  return (
    <Card className="movie-item">
      <img src={props.image} alt={props.title} className="movie-item__image" />
@@ -33,7 +34,7 @@ function MovieItem(props) {
      <div>
      <button className="movieReview">
         <Link to={`./MovieReview/${props.id}`} className="button">Full Review</Link>
-     </button>
+     </button>      
      <button onClick={handleDelete} className="movieDelete">
         <Link to="/edit-item" className="button">Edit</Link>
      </button>
@@ -43,6 +44,22 @@ function MovieItem(props) {
      </div>
    </Card>
  );
+} else {
+  return (
+  <Card className="movie-item">
+     <img src={props.image} alt={props.title} className="movie-item__image" />
+     <div className="movie-item__content">
+       <h2 className="movie-item__title">{props.title}</h2>
+       <p className="movie-item__rating">Rating: {props.rating}/5 ⭐</p>
+     </div>
+     <div>
+     <button className="movieReview">
+        <Link to={`./MovieReview/${props.id}`} className="button">Full Review</Link>
+     </button>      
+     </div>
+   </Card>
+  )
+}
 }
 
 
