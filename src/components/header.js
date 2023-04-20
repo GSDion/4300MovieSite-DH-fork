@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 
 export const isLoggedIn = false;
 
+const handleLogin = (username, password) => {
+// Compare username and password information to those found in the database
+}
+
 function Header() {
   
   if (isLoggedIn) {
@@ -33,6 +37,7 @@ function Header() {
         <label for="password">Password</label>
         <input type="text" placeholder="Enter Password" name="password" required></input>
         <button id="loginbutton">Login</button>
+        <button id="signupbutton"><Link to="/signup">Sign Up</Link></button>
       </div>
     </header>
   );

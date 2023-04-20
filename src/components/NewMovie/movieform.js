@@ -3,6 +3,7 @@ import Card from './movieformcard';
 import './movieform.css';
 import '../header.css';
 import { DUMMY_MOVIES } from '../homepage/homepage';
+import { Link } from 'react-router-dom';
 
 
 
@@ -46,7 +47,7 @@ function MovieForm(props) {
           <input type='text' id='img' value={img} onChange={(event) => setImg(event.target.value)} />
         </div>
         <div className='form-actions'>
-          <button className="addmoviebutton">Add Movie</button>
+          <button className="addmoviebutton" onClick={handleSubmit}><Link to="/">Add Movie</Link></button>
         </div>
       </form>
     </Card>

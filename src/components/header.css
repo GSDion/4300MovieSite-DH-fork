@@ -48,6 +48,7 @@
     color: white;
     font-family: 'Inter';
     border: solid 2px #000000;
+    margin-right: 10px;
   }
 
   button:hover {
