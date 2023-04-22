@@ -4,7 +4,7 @@ import './movieform.css';
 import '../header.css';
 import { DUMMY_MOVIES } from '../homepage/homepage';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 
 
 function MovieForm(props) {
@@ -24,6 +24,22 @@ function MovieForm(props) {
     newMovie.title = title;
     newMovie.rating = rating;
     newMovie.image = img;
+
+    // axios.post('http://localhost:8082/api/items', newMovie)
+    // .then(res => {
+    //   props.onAddMovie(res.data);
+    //     console.log(res);
+    //     setTitle('');
+    //     setRating('');
+    //     setImg('');
+    //     //props.onAddMovie(res.data);
+    //     DUMMY_MOVIES.push(newMovie);
+    //     navigate('/');
+    // })
+    // .catch(err => {
+    //   console.log('Error in CreateItem!', err);
+    // });
+
     props.onAddMovie(newMovie);
     setTitle('');
     setRating('');

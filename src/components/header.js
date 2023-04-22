@@ -3,7 +3,7 @@ import './header.css';
 
 import { Link } from 'react-router-dom';
 
-export const isLoggedIn = false;
+export const isLoggedIn = true;
 
 const handleLogin = (username, password) => {
 // Compare username and password information to those found in the database

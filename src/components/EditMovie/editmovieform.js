@@ -34,6 +34,9 @@ function EditMovieForm(props) {
    setRating('');
    setImg('');
    DUMMY_MOVIES.push(newMovie);
+
+
+   //axios.post
  }
 
 

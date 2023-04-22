@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
 
+  //userContext data, wrap routes in UserContext as instructed in "Authentification with JWT" handout
 
   return (
    <Router>

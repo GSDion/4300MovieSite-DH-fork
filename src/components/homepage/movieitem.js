@@ -39,7 +39,7 @@ if (isLoggedIn === true) {
         <Link to="/edit-item" className="button">Edit</Link>
      </button>
      <button onClick={handleDelete} className="movieDelete">
-        <Link to="/confirmation" className="button">Delete</Link>
+        <Link to="/confirmation" className="button">Delete</Link> {/** Delete from database too */}
      </button>
      </div>
    </Card>

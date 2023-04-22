@@ -1,11 +1,12 @@
 import SecHeader from '../secondheader';
 import '../secondheader.css';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 //import Movies from './components/homepage/movies';
 import MovieForm from './movieform';
 
 //define onAddMovie function from movieform.js
+import axios from 'axios';
 
 
 
@@ -19,6 +20,19 @@ function NewMovie() {
       });
     };
 
+  //axios push to homepage 
+  
+  useEffect(() => {
+    axios.get('http://localhost:8082/api/items')
+      .then(res => {
+        console.log(res);
+        setMovies(res.data);
+      })
+      .catch(err => {
+        console.log('Not succcessful');
+      });
+  }, []);
+  
     return (
       <div>
         <SecHeader />
