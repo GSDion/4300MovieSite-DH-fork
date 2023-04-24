@@ -1,12 +1,36 @@
 import React from 'react';
 import './header.css';
+import React, { useState } from 'react';
+import Bcrypt from 'bcryptjs';
 
 import { Link } from 'react-router-dom';
 
-export const isLoggedIn = true;
+export const isLoggedIn = false;
 
-const handleLogin = (username, password) => {
-// Compare username and password information to those found in the database
+const [username, setUsername] = useState('');
+const [password, setPassword] = useState('');
+
+const axios = require('axios');
+
+const login = {
+  username: null,
+  login: null
+}
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  login.username = username;
+  login.password = password;
+  setUsername('');
+  setPassword('');
+  hashedUsername = Bcrypt.hashSync(login.username, 10);
+  hashedPassword = Bcrypt.hashSync(login.password, 10);
+  // search for hash in the database and see if there is a match.
+  // if not
+  axios.post('/', {
+    username: hashedUsername,
+    password: hashedPassword
+  })
 }
 
 function Header() {
@@ -32,12 +56,14 @@ function Header() {
       </div>
       <h1 className="header__title">DCC Movie Reviews</h1>
       <div className="loginsection"> 
+      <form onSubmit={handleSubmit}>
         <label for="username">Username</label>
-        <input type="text" placeholder="Enter Username" name="username" required></input>
+        <input type="text" placeholder="Enter Username" id="username" value={username} onChange={(event) => setUsername(event.target.value)} required></input>
         <label for="password">Password</label>
-        <input type="text" placeholder="Enter Password" name="password" required></input>
-        <button id="loginbutton">Login</button>
+        <input type="text" placeholder="Enter Password" min='6' value={password} onChange={(event) => setPassword(event.target.value)} required></input>
+        <button id="loginbutton" onClick={handleSubmit}>Login</button>
         <button id="signupbutton"><Link to="/signup">Sign Up</Link></button>
+      </form>
       </div>
     </header>
   );

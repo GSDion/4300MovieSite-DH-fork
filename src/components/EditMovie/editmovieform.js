@@ -6,6 +6,7 @@ import { DUMMY_MOVIES } from '../homepage/homepage';
 import { Link } from 'react-router-dom';
 
 
+const axios = require('axios');
 
 
 function EditMovieForm(props) {
@@ -21,9 +22,6 @@ function EditMovieForm(props) {
    image: null
  }
 
-
-
-
  const handleSubmit = (event) => {
    event.preventDefault();
    newMovie.title = title;
@@ -35,8 +33,12 @@ function EditMovieForm(props) {
    setImg('');
    DUMMY_MOVIES.push(newMovie);
 
-
-   //axios.post
+  axios.post('/', {
+    id: newMovie.id,  
+    title: newMovie.title,
+    rating: newMovie.rating,
+    image: newMovie.image
+  })
  }
 
 
