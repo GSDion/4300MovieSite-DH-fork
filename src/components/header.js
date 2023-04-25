@@ -2,12 +2,10 @@ import './header.css';
 import React, { useState } from 'react';
 import Bcrypt from 'bcryptjs';
 import axios from 'axios';
-
 import { Link } from 'react-router-dom';
+import { signedUp } from './SignUpPage/signuppage.js';
 
-export const isLoggedIn = true;
-
-
+export let isLoggedIn = false;
 
 function Header() {
 
@@ -29,15 +27,14 @@ function Header() {
     setPassword('');
     const hashedUsername = Bcrypt.hashSync(login.username, 10);
     const hashedPassword = Bcrypt.hashSync(login.password, 10);
-    // search for hash in the database and see if there is a match.
-    // if not
-    axios.post('/', {
+    axios.get('/localhost:8082/api/users', {
       username: hashedUsername,
       password: hashedPassword
     })
+    isLoggedIn = true;
   }
   
-  if (isLoggedIn) {
+  if (isLoggedIn || signedUp) {
     return (
     <header className="header">
       <div className="header__logo">
@@ -63,7 +60,7 @@ function Header() {
         <input type="text" placeholder="Enter Username" id="username" value={username} onChange={(event) => setUsername(event.target.value)} required></input>
         <label for="password">Password</label>
         <input type="text" placeholder="Enter Password" min='6' value={password} onChange={(event) => setPassword(event.target.value)} required></input>
-        <button id="loginbutton" onClick={handleSubmit}>Login</button>
+        <button id="loginbutton" onClick={handleSubmit}><Link to="/">Login</Link></button>
         <button id="signupbutton"><Link to="/signup">Sign Up</Link></button>
       </form>
       </div>

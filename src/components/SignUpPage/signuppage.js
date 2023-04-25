@@ -3,18 +3,17 @@ import Card from "../NewMovie/movieformcard";
 import React, { useState } from 'react';
 import Bcrypt from 'bcryptjs';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-
+export let signedUp = false;
 
 function SignUpPage() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-
-    //const axios = require('axios');
-
-    const login = {
+    
+    const signup = {
         username: null,
         password: null,
         confirmPassword: null
@@ -22,19 +21,20 @@ function SignUpPage() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        login.username = username;
-        login.password = password;
-        login.confirmPassword = confirmPassword;
+        signup.username = username;
+        signup.password = password;
+        signup.confirmPassword = confirmPassword;
         setUsername('');
         setPassword('');
         setConfirmPassword('');
-        if (login.password.value === login.confirmPassword.value) { 
-        // condition check also needed to see if hash currently exists in the database.
-        axios.post('/signup', {
-            username: Bcrypt.hashSync(login.username, 10),
-            password: Bcrypt.hashSync(login.password, 10) 
-        })}
+        if (signup.password === signup.confirmPassword) { 
+        axios.post('http://localhost:8082/api/users', {
+            username: Bcrypt.hashSync(signup.username, 10),
+            password: Bcrypt.hashSync(signup.password, 10),
+        })
+        signedUp = true;
     }
+}
 
     return(
         <div>
@@ -54,7 +54,7 @@ function SignUpPage() {
                 <input type="password" id="confirmPassword" min='6' value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} placeholder="Confirm your password..." required></input>    
             </div> 
             <div className="form-actions">
-                <button className="signupbutton" onClick={handleSubmit}>Sign Up</button>
+                <button className="signupbutton" onClick={handleSubmit}><Link to="/">Sign Up</Link></button>
             </div>
         </form>
         </Card>
