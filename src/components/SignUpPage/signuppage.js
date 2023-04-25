@@ -2,37 +2,40 @@ import SecHeader from "../secondheader";
 import Card from "../NewMovie/movieformcard";
 import React, { useState } from 'react';
 import Bcrypt from 'bcryptjs';
+import axios from 'axios';
 
-const [username, setUsername] = useState('');
-const [password, setPassword] = useState('');
-const [confirmPassword, setConfirmPassword] = useState('');
-
-const axios = require('axios');
-
-const login = {
-    username: null,
-    password: null,
-    confirmPassword: null
-}
-
-const handleSubmit = (event) => {
-    event.preventDefault();
-    login.username = username;
-    login.password = password;
-    login.confirmPassword = confirmPassword;
-    setUsername('');
-    setPassword('');
-    setConfirmPassword('');
-    if (login.password.value === login.confirmPassword.value) { 
-    // condition check also needed to see if hash currently exists in the database.
-    axios.post('/signup', {
-        username: Bcrypt.hashSync(login.username, 10),
-        password: Bcrypt.hashSync(login.password, 10) 
-    })}
-}
 
 
 function SignUpPage() {
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    //const axios = require('axios');
+
+    const login = {
+        username: null,
+        password: null,
+        confirmPassword: null
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        login.username = username;
+        login.password = password;
+        login.confirmPassword = confirmPassword;
+        setUsername('');
+        setPassword('');
+        setConfirmPassword('');
+        if (login.password.value === login.confirmPassword.value) { 
+        // condition check also needed to see if hash currently exists in the database.
+        axios.post('/signup', {
+            username: Bcrypt.hashSync(login.username, 10),
+            password: Bcrypt.hashSync(login.password, 10) 
+        })}
+    }
+
     return(
         <div>
         <SecHeader />
