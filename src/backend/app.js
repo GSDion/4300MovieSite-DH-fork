@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 const app = express();
 
 // Port 8082 for back-end server, Port 3000 for front-end
@@ -13,6 +14,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     next();
   });
+app.use(bodyParser.json())
 
 // Displayed on browser
 app.get('/', (req, res) => res.send('Hello world!'));

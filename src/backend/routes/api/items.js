@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-router.get('/', (req, res) => {res.send('testing get / item route')});
-router.get('/:id', (req,res) => {res.send('testing get /:id route')});
-router.post('/', (req,res ) => {res.send('testing post / route')});
-router.put('/:id', (req, res ) => {res.send('testing put /:id route')});
+//router.get('/', (req, res) => {res.send('testing get / item route')});
+//router.get('/:id', (req,res) => {res.send('testing get /:id route')});
+//router.post('/', (req,res ) => {res.send('testing post / route')});
+//router.put('/:id', (req, res ) => {res.send('testing put /:id route')});
 
 
 const Item = require('../../models/Item');
@@ -25,6 +25,7 @@ router.get('/:id', (req, res) => {
 //Add a new item
 //@route POST api/items
 router.post('/', (req, res) => {
+    console.log(req.body);
     Item.create(req.body)
     .then((item) => res.json({msg: 'Item added successully'}))
     .catch((err) => res.status(400).json({ error: 'Unable to add this item'}));

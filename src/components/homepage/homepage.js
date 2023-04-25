@@ -1,6 +1,8 @@
 import Movies from './movies';
 import Header from '../header';
-
+import { useState } from 'react';
+import axios from 'axios';
+import { db } from '../../backend/models/Item';
 
 export const DUMMY_MOVIES = [
   {
@@ -42,14 +44,14 @@ export const DUMMY_MOVIES = [
     rating: 5.0,
     image: 'https://m.media-amazon.com/images/M/MV5BMjA4NDI0MTIxNF5BMl5BanBnXkFtZTYwNTM0MzY2._V1_.jpg'
   },
-  
-
 ];
+
+// export const DUMMY_MOVIES = axios.get("/");
 
 
 function HomePage() {
 
-  
+
   return (
     <div>
       <Header />
