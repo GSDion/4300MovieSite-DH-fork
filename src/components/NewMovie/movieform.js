@@ -13,7 +13,7 @@ function MovieForm(props) {
   const [img, setImg] = useState('');
 
   const newMovie = {
-    id: 'm' + (DUMMY_MOVIES.length + 1),
+    id: 'm' + Math.random().toString(),
     title: null,
     rating: null,
     image: null
@@ -25,27 +25,6 @@ function MovieForm(props) {
     newMovie.rating = rating;
     newMovie.image = img;
 
-    // axios.post('http://localhost:8082/api/items', newMovie)
-    // .then(res => {
-    //   props.onAddMovie(res.data);
-    //     console.log(res);
-    //     setTitle('');
-    //     setRating('');
-    //     setImg('');
-    //     //props.onAddMovie(res.data);
-    //     DUMMY_MOVIES.push(newMovie);
-    //     navigate('/');
-    // })
-    // .catch(err => {
-    //   console.log('Error in CreateItem!', err);
-    // });
-
-    props.onAddMovie(newMovie);
-    setTitle('');
-    setRating('');
-    setImg('');
-    DUMMY_MOVIES.push(newMovie);
-    
     axios.post('http://localhost:8082/api/items', {
       id: newMovie.id,  
       title: newMovie.title,

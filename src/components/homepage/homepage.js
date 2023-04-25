@@ -30,5 +30,5 @@ function HomePage() {
   );
 }
 
-export const DUMMY_MOVIES = movies;
+export var DUMMY_MOVIES = movies;
 export default HomePage;

@@ -4,22 +4,14 @@ import './movieitem.css';
 import { Link } from 'react-router-dom';
 import HomePage, { DUMMY_MOVIES } from '../homepage/homepage';
 import {isLoggedIn} from '../header.js';
+import axios from 'axios';
 
 function MovieItem(props) {
 
 
-  const handleDelete = () => {
+  const handleDelete = (id) => {
 
-   let startLength = DUMMY_MOVIES.length
-   for (let i = 0; i < startLength; i++) {
-     const currmovie = DUMMY_MOVIES.shift()
-
-     if (currmovie.title === props.title) {
-       startLength--;
-     } else {
-       DUMMY_MOVIES.push(currmovie)
-     }
-   }
+   axios.delete('http://localhost:8082/api/items', id)
 
  };
 
@@ -35,10 +27,10 @@ if (isLoggedIn === true) {
      <button className="movieReview">
         <Link to={`./MovieReview/${props.id}`} className="button">Full Review</Link>
      </button>      
-     <button onClick={handleDelete} className="movieDelete">
+     <button onClick={() => handleDelete(props.id)} className="movieDelete">
         <Link to="/edit-item" className="button">Edit</Link>
      </button>
-     <button onClick={handleDelete} className="movieDelete">
+     <button onClick={() => handleDelete(props.id)} className="movieDelete">
         <Link to="/confirmation" className="button">Delete</Link> {/** Delete from database too */}
      </button>
      </div>
