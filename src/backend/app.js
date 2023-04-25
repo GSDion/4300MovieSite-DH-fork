@@ -33,7 +33,7 @@ const conn_str = 'mongodb+srv://dh67149:mI0UNYi19IlRaHMo@cluster0.o8nso8o.mongod
 mongoose.set('strictQuery', false);
 mongoose.connect(conn_str, {
     useUnifiedTopology : true,
-    useNewURLParser : true
+    useNewUrlParser : true
 })
 .then(() => {
     app.listen(port)
