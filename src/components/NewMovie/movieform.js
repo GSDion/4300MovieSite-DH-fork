@@ -46,7 +46,7 @@ function MovieForm(props) {
     setImg('');
     DUMMY_MOVIES.push(newMovie);
     
-    axios.post('/', {
+    axios.post('http://localhost:8082/api/items', {
       id: newMovie.id,  
       title: newMovie.title,
       rating: newMovie.rating,
