@@ -28,11 +28,18 @@ function SignUpPage() {
         setPassword('');
         setConfirmPassword('');
         if (signup.password === signup.confirmPassword) { 
-        axios.post('http://localhost:8082/api/users', {
-            username: Bcrypt.hashSync(signup.username, 10),
-            password: Bcrypt.hashSync(signup.password, 10),
-        })
-        signedUp = true;
+            try {
+                axios.get('http://localhost:8082/api/users', { // wrong location
+                username: Bcrypt.hashSync(signup.username, 10), // to check and see if the username already exists
+            })
+            alert('User already exists.')  
+            } catch (error) {
+                axios.post('http://localhost:8082/api/users', { // wrong location
+                username: Bcrypt.hashSync(signup.username, 10),
+                password: Bcrypt.hashSync(signup.password, 10),
+            })
+            signedUp = true;
+            }
     }
 }
 

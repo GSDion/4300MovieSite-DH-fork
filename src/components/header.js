@@ -27,11 +27,15 @@ function Header() {
     setPassword('');
     const hashedUsername = Bcrypt.hashSync(login.username, 10);
     const hashedPassword = Bcrypt.hashSync(login.password, 10);
-    axios.get('/localhost:8082/api/users', {
-      username: hashedUsername,
-      password: hashedPassword
-    })
-    isLoggedIn = true;
+      try {
+        axios.get('/localhost:8082/api/users', { // wrong location
+          username: hashedUsername,
+          password: hashedPassword
+        })
+      isLoggedIn = true;
+      } catch (error) {
+        alert('Incorrect username/password, please try again.')
+      }
   }
   
   if (isLoggedIn || signedUp) {
