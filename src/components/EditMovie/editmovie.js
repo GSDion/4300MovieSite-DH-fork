@@ -14,6 +14,7 @@ function EditMovie() {
 
   const { id } = useParams();
   console.log(id);
+  console.log(movie)
 
   useEffect(() => {
     axios.get(`http://localhost:8082/api/items/${id}`)

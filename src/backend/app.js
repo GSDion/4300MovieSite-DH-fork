@@ -44,8 +44,7 @@ mongoose.connect(conn_str, {
 })
 
 const App = () => {
-    localStorage.removeItem('auth-token');
-    
+
     const [userData, setUserData] = useState({
       token: undefined,
       user: undefined,
