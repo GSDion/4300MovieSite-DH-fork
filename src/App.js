@@ -6,6 +6,7 @@ import MovieReview from './components/MovieReview/moviereview';
 import Confirmation from './components/Confirmation/confirmation';
 import SignUpPage from './components/SignUpPage/signuppage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ErrorPage from './components/homepage/errorpage';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
          <Route exact path="/edit-item" element={<EditMovie />}></Route>
          <Route exact path="/movieReview/:id" element={<MovieReview />}></Route>
          <Route exact path="/signup" element={<SignUpPage />}></Route> 
+         <Route exact path="*" element={<ErrorPage/>}></Route>
        </Routes>
      </div>
    </Router>
