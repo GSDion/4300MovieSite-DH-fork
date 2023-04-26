@@ -13,6 +13,9 @@ const ItemSchema = new mongoose.Schema ({
        type: String,
    },
    id: {
+       type: String,
+   },
+   review: {
        type: String
    }
 

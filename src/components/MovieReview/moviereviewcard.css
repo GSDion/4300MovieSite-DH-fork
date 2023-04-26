@@ -1,34 +1,47 @@
 .moviereviewcard {
     display: flex;
     background-color: #4B82B5;
-    border-radius: 8px;
     overflow: hidden;
-    width: 600px; /* change the width to your desired size */
-    height: 400px;
+    width: 1200px; /* change the width to your desired size */
+    height: 700px;
     margin: 0 auto; /* center the card horizontally */
     margin-top: 45px;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .moviereviewcard__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    margin-right: 20px;
   }
   
+  .movie-item__image {
+    max-width: 250px;
+    max-height: 300px;
+  }
+  
+  
   .moviereviewcard__body {
+    background-color: #4B82B5;
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 100%;
   }
-  
-  .moviereviewcard__image {
-    background-size: cover;
-    background-position: center;
-    width: 50%;
-    height: 100%;
-  }
+
   
   .moviereviewcard__details {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     padding: 20px;
-    width: 50%;
+    width: 100%;
     height: 100%;
   }
   
@@ -36,21 +49,27 @@
     color: white;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 5px;
   }
   
   .moviereviewcard__descriptions {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     color: white;
     font-size: 16px;
   }
   
   .moviereviewcard__description1 {
-    width: 48%;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
   }
   
   .moviereviewcard__description2 {
-    width: 48%;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
   }
+
