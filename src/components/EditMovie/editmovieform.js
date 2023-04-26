@@ -46,15 +46,15 @@ function EditMovieForm(props) {
      <form onSubmit={handleSubmit}>
        <div className='form-control'>
          <label htmlFor='title'>Title</label>
-         <input type='text' id='title' value={title} onChange={(event) => setTitle(event.target.value)} />
+         <input type='text' id='title' value={title} placeholder={title} onChange={(event) => setTitle(event.target.value)} />
        </div>
        <div className='form-control'>
          <label htmlFor='rating'>Rating</label>
-         <input type='number' id='rating' min='1' max='5' value={rating} onChange={(event) => setRating(event.target.value)} />
+         <input type='number' id='rating' min='1' max='5' value={rating} placeholder={rating} onChange={(event) => setRating(event.target.value)} />
        </div>
        <div className='form-control'>
          <label htmlFor='img'>Image URL</label>
-         <input type='text' id='img' value={img} onChange={(event) => setImg(event.target.value)} />
+         <input type='text' id='img' value={img} placeholder={img} onChange={(event) => setImg(event.target.value)} />
        </div>
        <div className='form-actions'>
          <button className="addmoviebutton" onClick={handleSubmit}><Link to="/">Add Movie</Link></button>

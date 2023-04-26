@@ -1,17 +1,24 @@
 import SecHeader from "../secondheader";
 import Card from "../NewMovie/movieformcard";
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Bcrypt from 'bcryptjs';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import UserContext from "../../backend/context/UserContext";
 
 export let signedUp = false;
 
 function SignUpPage() {
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const navigate = useNavigate();
+    const [username, setUsername] = useState();
+    const [password, setPassword] = useState();
+    const [confirmPassword, setConfirmPassword] = useState();
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const { setUserData } = useContext(UserContext);
     
     const signup = {
         username: null,
@@ -19,29 +26,46 @@ function SignUpPage() {
         confirmPassword: null
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        signup.username = username;
-        signup.password = password;
-        signup.confirmPassword = confirmPassword;
-        setUsername('');
-        setPassword('');
-        setConfirmPassword('');
-        if (signup.password === signup.confirmPassword) { 
-            try {
-                axios.get('http://localhost:8082/api/users', { // wrong location
-                username: Bcrypt.hashSync(signup.username, 10), // to check and see if the username already exists
-            })
-            alert('User already exists.')  
-            } catch (error) {
-                axios.post('http://localhost:8082/api/users', { // wrong location
-                username: Bcrypt.hashSync(signup.username, 10),
-                password: Bcrypt.hashSync(signup.password, 10),
-            })
+
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        setLoading(true);
+        try {
+
+            const newUser = { username, password, confirmPassword };
+            await axios.post("http://localhost:8082/api/users/signup", newUser);
+            const loginUser = { username, password };
+            const loginRes = await axios.post("http://localhost:8082/api/users/login", loginUser)
+            setUserData({
+                token: loginRes.data.token,
+                user: loginRes.data.user,
+            });
+
+            localStorage.setItem("auth-token", loginRes.data.token);
+            setLoading(false);
             signedUp = true;
+            navigate('/');
+        } catch (err) {
+            if (err.response.status === 500) {
+                const loginUser = { username, password };
+                const loginRes = await axios.post("http://localhost:8082/api/users/login", loginUser)
+                setUserData({
+                    token: loginRes.data.token,
+                    user: loginRes.data.user,
+                });
+
+                localStorage.setItem("auth-token", loginRes.data.token);
+                setLoading(false);
+                signedUp = true;
+                navigate('/');
+            } else {
+                setLoading(false);
+                err.response.data.msg && setErrorMessage(err.response.data.msg);
             }
+        }
     }
-}
+
 
     return(
         <div>
@@ -61,11 +85,13 @@ function SignUpPage() {
                 <input type="password" id="confirmPassword" min='6' value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} placeholder="Confirm your password..." required></input>    
             </div> 
             <div className="form-actions">
-                <button className="signupbutton" onClick={handleSubmit}><Link to="/">Sign Up</Link></button>
+                <button className="signupbutton" onClick={handleSubmit}>Sign Up</button>
             </div>
+            {errorMessage && <p className="error">{errorMessage}</p>}
         </form>
         </Card>
         </div>
+        
     )
 }
 

@@ -43,3 +43,36 @@ mongoose.connect(conn_str, {
     console.log(`Erro in DB Connection ${err}`);
 })
 
+const App = () => {
+    localStorage.removeItem('auth-token');
+    
+    const [userData, setUserData] = useState({
+      token: undefined,
+      user: undefined,
+    });
+    useEffect(() => {
+      const checkLoggedIn = async () => {
+        let token = localStorage.getItem("auth-token");
+        if (token === null) {
+          localStorage.setItem("auth-token", "");
+          token = "";
+        }
+        const tokenResponse = await axios.post(
+          "http://localhost:8082/tokenIsValid",
+          null,
+          { headers: {"x-auth-token": token} }
+        );
+        if (tokenResponse.data) {
+          const userRes = await axios.get("http://localhost:8082/", {
+            headers: {"x-auth-toekn": token },
+          });
+          setUserData({
+            token,
+            user: userRes.data,
+          });
+        }
+      };
+      checkLoggedIn();
+    }, []);
+  }
+

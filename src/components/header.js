@@ -1,54 +1,75 @@
 import './header.css';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Bcrypt from 'bcryptjs';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { signedUp } from './SignUpPage/signuppage.js';
+import { createContext } from 'react';
+import UserContext from "../backend/context/UserContext"
+ 
 
-export let isLoggedIn = true;
+export let isLoggedIn = false;
 
 function Header() {
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
+  const { setUserData } = useContext(UserContext);
 
-  //const axios = require('axios');
+  if (signedUp & !(localStorage.getItem("auth-token") === '')) {
+    isLoggedIn = true;
+  }
 
   const login = {
     username: null,
     login: null
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    login.username = username;
-    login.password = password;
-    setUsername('');
-    setPassword('');
-    const hashedUsername = Bcrypt.hashSync(login.username, 10);
-    const hashedPassword = Bcrypt.hashSync(login.password, 10);
-      try {
-        axios.get('/localhost:8082/api/users', { // wrong location
-          username: hashedUsername,
-          password: hashedPassword
-        })
-      isLoggedIn = true;
-      } catch (error) {
-        alert('Incorrect username/password, please try again.')
-      }
-  }
+  const logout = () => {
+    localStorage.setItem('auth-token', '');
+    setUserData({ token: undefined, user: undefined });
+    isLoggedIn = false;
+  };
+
   
-  if (isLoggedIn || signedUp) {
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const loginUser = { username, password };
+      const loginRes = await axios.post("http://localhost:8082/api/users/login", loginUser)
+      setUserData({
+        token: loginRes.data.token,
+        user: loginRes.data.user,
+      });
+
+      localStorage.setItem("auth-token", loginRes.data.token);
+      isLoggedIn = true;
+    } catch (err) {
+      setLoading(false);
+      isLoggedIn = false;
+      err.response.data.msg && setError(err.response.data.msg)
+    }
+  }
+
+
+
+  if (isLoggedIn) {
     return (
     <header className="header">
       <div className="header__logo">
         <img src={process.env.PUBLIC_URL + '/logo.jpg'} alt="logo" />
       </div>
       <h1 className="header__title">DCC Movie Reviews</h1>
-      <h2 className="welcome">Welcome!</h2> 
-      <button className="addmoviebutton">
-        <Link to="/add-item" className="button">Add Movie</Link>
-      </button>
+      <h2 className="welcome">Welcome!</h2>
+      <div>
+        <button className="logout-button" onClick={logout}>Logout</button> 
+        <button className="addmoviebutton">
+          <Link to="/add-item" className="button">Add Movie</Link>
+        </button>
+      </div>
     </header>
   );
 } else {
@@ -67,6 +88,7 @@ function Header() {
         <button id="loginbutton" onClick={handleSubmit}><Link to="/">Login</Link></button>
         <button id="signupbutton"><Link to="/signup">Sign Up</Link></button>
       </form>
+      {error && <div className="error-message">{error}</div>}
       </div>
     </header>
   );

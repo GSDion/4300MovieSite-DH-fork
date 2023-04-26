@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './moviecard';
 import './movieitem.css';
 import { Link } from 'react-router-dom';
-import HomePage, { DUMMY_MOVIES } from '../homepage/homepage';
+import HomePage from '../homepage/homepage';
 import {isLoggedIn} from '../header.js';
 import axios from 'axios';
 
@@ -20,7 +20,6 @@ function MovieItem(props) {
         })
         .catch(error => {
            console.log(props);
-           console.log(DUMMY_MOVIES);
             console.log(error);
             // handle error, e.g. display error message
         });
