@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { signedUp } from './SignUpPage/signuppage.js';
 
-export let isLoggedIn = false;
+export let isLoggedIn = true;
 
 function Header() {
 
