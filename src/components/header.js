@@ -85,8 +85,15 @@ function Header() {
         <input type="text" placeholder="Enter Username" id="username" value={username} onChange={(event) => setUsername(event.target.value)} required></input>
         <label for="password">Password</label>
         <input type="text" placeholder="Enter Password" min='6' value={password} onChange={(event) => setPassword(event.target.value)} required></input>
-        <button id="loginbutton" onClick={handleSubmit}><Link to="/">Login</Link></button>
-        <button id="signupbutton"><Link to="/signup">Sign Up</Link></button>
+        
+        <button className="Header_buttons" id="loginbutton" onClick={handleSubmit}>
+          <Link to="/">Login</Link>
+        </button>
+
+        <button className="Header_buttons" id="signupbutton">
+          <Link to="/signup">Sign Up</Link>
+        </button>
+
       </form>
       {error && <div className="error-message">{error}</div>}
       </div>
