@@ -1,9 +1,9 @@
 .moviereviewcard {
     display: flex;
-    background-color: #4B82B5;
+    background-image: linear-gradient(to right, #DECBA4, #3E5151);
     overflow: hidden;
-    width: 1200px; /* change the width to your desired size */
-    height: 700px;
+    width: 900px;
+    height: 550px;
     margin: 0 auto; /* center the card horizontally */
     margin-top: 45px;
     justify-content: center;
@@ -27,7 +27,7 @@
   
   
   .moviereviewcard__body {
-    background-color: #4B82B5;
+    background-image: linear-gradient(to right, #DECBA4, #3E5151);
     display: flex;
     flex-direction: row;
     width: 100%;

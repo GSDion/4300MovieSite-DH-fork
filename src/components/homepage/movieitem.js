@@ -45,15 +45,21 @@ return (
      <p className="movie-item__rating">Rating: {props.rating}/5 ⭐</p>
    </div>
    <div>
-   <button className="movieReview">
+
+  <div className = "logged_in_buttons">
+    <button className="movieReview">
       <Link to={`./MovieReview/${props._id}`} className="button">Full Review</Link>
-   </button>    
-   <button className="movieDelete">
-     <Link to={`/edit-item/${props._id}`} className="button">Edit</Link>
-   </button>
-   <button onClick={() => handleDelete(props._id)} className="movieDelete">
+    </button> 
+    
+    <button className="movieDelete">
+      <Link to={`/edit-item/${props._id}`} className="button">Edit</Link>
+    </button>
+
+    <button onClick={() => handleDelete(props._id)} className="movieDelete">
       <Link to="/confirmation" className="button">Delete</Link> {/** Delete from database too */}
-   </button>
+    </button>
+  </div>
+
    </div>
  </Card>
 );
@@ -66,7 +72,7 @@ return (
      <p className="movie-item__rating">Rating: {props.rating}/5 ⭐</p>
    </div>
    <div>
-   <button className="movieReview">
+   <button className="signed_out_movieReview">
       <Link to={`./MovieReview/${props._id}`} className="button">Full Review</Link>
    </button>    
    </div>

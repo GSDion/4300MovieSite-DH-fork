@@ -14,7 +14,7 @@ function MovieReviewCard(props) {
               </div>
               <div className="moviereviewcard__title">{props.movie.title}</div>
                 <div className="moviereviewcard__descriptions">
-                  <div className="moviereviewcard__description2"><p>Rating: {props.movie.rating}</p></div>
+                  <div className="moviereviewcard__description2"><p>Rating: {props.movie.rating}⭐</p></div>
                   <div className="moviereviewcard__description2"><p>Review: </p></div>
                     <div className="moviereviewcard__description1">{props.movie.review}</div>  
                 </div>
