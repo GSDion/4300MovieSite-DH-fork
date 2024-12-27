@@ -1,17 +1,17 @@
 .moviecard {
   display: flex;
   flex-direction: column;
-  background-color: #4B82B5;
+  background-image: linear-gradient(to right, #DECBA4, #3E5151);
   border-radius: 20px;
   /* overflow: hidden; */
-  width: 600px; /* change the width to your desired size */
+  width: 600px; 
   height: 400px;
   margin: 0 auto ; /* center the card horizontally */
   margin-top:45px;
 }
 
 .moviecard__header {
-  background-color: #4B82B5; /* change the background color */
+  background-image: linear-gradient(to right, #DECBA4, #3E5151);
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -19,7 +19,7 @@
 }
 
 .moviecard__body {
-   /* change the background color */
+  
   padding: 1rem;
 }
 
@@ -36,4 +36,7 @@
 .form-actions {
   margin-top: 30px;
   margin-left: 240px;
+}
+.addmovieform_input {
+  width:93% !important;
 }

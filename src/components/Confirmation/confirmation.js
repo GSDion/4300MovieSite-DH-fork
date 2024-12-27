@@ -11,7 +11,7 @@ function Confirmation() {
         <SecHeader />
         <p>Movie review has been deleted!</p>
        <button className="movieDelete">
-          <Link to="/" className="button">Okay</Link>
+          <Link to="/" className="button deletion-confirm-btn">Okay</Link>
        </button>
     </div>
    );

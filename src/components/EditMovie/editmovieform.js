@@ -57,19 +57,19 @@ function EditMovieForm(props) {
      <form onSubmit={handleSubmit}>
        <div className='form-control'>
          <label htmlFor='title'>Title</label>
-         <input type='text' id='title' value={title} placeholder={temptitle} onChange={(event) => setTitle(event.target.value)} />
+         <input type='text' className='editmovieform_input' id='title' value={title} placeholder={temptitle} onChange={(event) => setTitle(event.target.value)} />
        </div>
        <div className='form-control'>
          <label htmlFor='rating'>Rating</label>
-         <input type='number' id='rating' min='1' max='5' value={rating} placeholder={temprating} onChange={(event) => setRating(event.target.value)} />
+         <input type='number' className='editmovieform_input' id='rating' min='1' max='5' value={rating} placeholder={temprating} onChange={(event) => setRating(event.target.value)} />
        </div>
        <div className='form-control'>
          <label htmlFor='img'>Image URL</label>
-         <input type='text' id='img' value={img} placeholder={tempimg} onChange={(event) => setImg(event.target.value)} />
+         <input type='text' className='editmovieform_input' id='img' value={img} placeholder={tempimg} onChange={(event) => setImg(event.target.value)} />
        </div>
        <div className='form-control'>
           <label htmlFor='img'>Movie Review</label>
-          <input type='text' id='review' value={review} placeholder={tempreview} onChange={(event) => setReview(event.target.value)} />
+          <input type='text' className='editmovieform_input' id='review' value={review} placeholder={tempreview} onChange={(event) => setReview(event.target.value)} />
         </div>
        <div className='form-actions'>
          <button className="addmoviebutton" onClick={handleSubmit}><Link to="/">Edit Movie</Link></button>
